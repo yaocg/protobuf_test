@@ -4,29 +4,10 @@ cmake_minimum_required(VERSION 3.1)
 #2.project name，指定项目的名称，一般和项目的文件夹名称对应
 PROJECT(gittest)
 
-#添加库
-find_package(Boost REQUIRED COMPONENTS
-# regex
-thread filesystem system regex program_options chrono date_time atomic
-)
-if(NOT Boost_FOUND)
-    message("Not found Boost")
-endif()
-
-#添加库头文件
-include_directories(${Boost_INCLUDE_DIRS})
-
-#打印库路径
-#message("${Boost_INCLUDE_DIRS}")
-#message("${Boost_LIBRARIES}")
-
 #3.head file path，头文件目录
 INCLUDE_DIRECTORIES(
 .
 )
-
-#设置编译器版本
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 #4.source directory，源文件目录
 AUX_SOURCE_DIRECTORY(. DIR_SRCS)
@@ -40,4 +21,4 @@ ${DIR_SRCS}
 ADD_EXECUTABLE(${PROJECT_NAME} ${TEST_MATH})
 
 #7.添加库的名称
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${Boost_LIBRARIES} protobuf)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} protobuf)
