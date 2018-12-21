@@ -1,0 +1,48 @@
+syntax = "proto2";
+package TestDemoNew4;
+message SearchRequest {
+  //字符串类型
+  required string query = 1;
+
+  //整数类型
+  optional int32 page_number = 2 [default = 10];
+  optional int32 result_per_page = 3;
+
+  //浮点类型
+  optional float  money_1 = 4;
+  optional double money_2 = 5;
+
+  //数组类型
+  repeated int32 samples = 6 [packed=true];
+
+  //枚举类型
+  enum Corpus {
+       UNIVERSAL = 0;
+       WEB = 1;
+       IMAGES = 2;
+       LOCAL = 3;
+       NEWS = 4;
+       PRODUCTS = 5;
+       VIDEO = 6;
+     }
+  optional Corpus corpus = 7 [default = UNIVERSAL];
+
+  //其他消息类型
+  optional Result result = 8;
+
+  optional string new1 = 9  [default = "add new1 field"];
+  optional string new2 = 10 [default = "add new2 field"];
+  optional string new3 = 11 [default = "add new3 field"];
+  optional string new4 = 12 [default = "add new4 field"];
+  optional string new5 = 13 [default = "add new5 field"];
+}
+
+message Result {
+  required string url = 1;
+  optional string title = 2;
+  repeated string snippets = 3;
+  optional string title1 = 4[default = "title1"];
+  optional string title2 = 5[default = "title1"];
+  optional string title3 = 6[default = "title1"];
+}
+
